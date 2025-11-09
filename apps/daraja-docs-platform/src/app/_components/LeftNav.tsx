@@ -6,6 +6,7 @@ import { SIDENAVITEMS } from '../../config/constants/routes';
 import { useState } from 'react';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import VersionSwitcher from './VersionSwitcher';
+import NProgress from 'nprogress';
 
 const DRAWER_WIDTH = 275;
 
@@ -105,6 +106,7 @@ const LeftNav = () => {
                                         key={item.title}
                                         onClick={(e) => {
                                             e.preventDefault();
+                                            NProgress.start();
                                             router.push(item.segment);
                                             if (openOnMobile) {
                                                 setOpenOnMobile(false);

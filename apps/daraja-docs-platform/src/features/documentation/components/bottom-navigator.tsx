@@ -6,6 +6,7 @@ import { Frown, SmilePlus, Smile, Angry } from 'lucide-react';
 import { useResponsiveness } from '../../../shared/hooks';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import NProgress from 'nprogress';
 
 export const DocsBottomNavigator = ({ prevDoc, nextDoc }: any) => {
     const router = useRouter();
@@ -30,7 +31,10 @@ export const DocsBottomNavigator = ({ prevDoc, nextDoc }: any) => {
                             <Box
                                 key={index}
                                 sx={{ cursor: 'pointer', opacity: 0.8, '&:hover': { opacity: 1 } }}
-                                onClick={() => router.push(doc.segment)}
+                                onClick={() => {
+                                    NProgress.start();
+                                    router.push(doc.segment);
+                                }}
                             >
                                 <Typography variant={isMobile ? 'caption' : 'body2'}>
                                     {index === 0 ? 'Previous' : 'Next'}
